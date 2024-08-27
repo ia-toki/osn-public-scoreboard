@@ -2,6 +2,11 @@
   margin-top: 0;
 }
 
+.alert {
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
 #last-update-info {
   float: right;
 }
