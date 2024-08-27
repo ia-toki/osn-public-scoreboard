@@ -1,7 +1,7 @@
 var currentProblemCount = 0;
 
 function fetchScoreboard(contestJid) {
-  $.get(config.serverUrl + '?contestJid=' + contestJid, function (data) {
+  $.get(config.serverUrl + "?contestJid=" + contestJid, function (data) {
     refreshScoreboard(data);
 
     setTimeout(function () {
@@ -73,6 +73,13 @@ function updateTimestamp(lastUpdateTime) {
   $("#lastUpdateTime").html(lastUpdateTime);
 }
 
+function updateProgressBar() {
+  var now = +new Date();
+  var progress = now - config.contestStartTimestampInMs;
+  var percentage = (progress * 100.0) / config.contestDurationInMs;
+  $("#progress-bar").css({ width: percentage + "%" });
+}
+
 function refreshScoreboard(data) {
   var scoreboard = data.scoreboard;
   var problemAliases = scoreboard.state.problemAliases;
@@ -86,4 +93,5 @@ function refreshScoreboard(data) {
   refreshScoreboardEntries(entries);
 
   updateTimestamp(new Date(data.updatedTime));
+  updateProgressBar();
 }

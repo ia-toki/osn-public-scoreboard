@@ -18,5 +18,7 @@ with open('contestants.csv') as csv_file:
     print('var config = ' + json.dumps({
         'serverUrl': 'http://localhost:9144/serve',
         'refreshIntervalInMs': 5000,
+        'contestStartTimestampInMs': 1724684400000,
+        'contestDurationInMs': 7200000,
         'contestants': contestants
     }, indent=4, separators=(',', ': ')))
